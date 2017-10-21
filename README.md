@@ -36,3 +36,7 @@ Things to be to to inclue in envornment:
     -different types of plants that can grow
     -vegitation that can grow, and if it is edible
     - different seasons that could grow. 
+
+
+
+hi
