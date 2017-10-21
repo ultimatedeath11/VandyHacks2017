@@ -51,8 +51,25 @@ function days (fun){
         function animal_moves(){
             /*TODO should have an array of animals that are in the world and they should each be looped through, each when looped should move in a random X,Y,Z coordinates
             TODO pass or call another funciton that has the animal's x,y,z coordinates as values and move them there.
-            TODO make sure that it is not rainning
+
             */
+            if (!isRaining){
+                animals_location(x){
+                    if (alive_array[x]) { //rray of alive animals that need to exist as they come into being we add them to this array
+                        this.x = math.random() * 5;
+                        this.y = groundlevel;
+                        this.z = math.random() * 5;
+                        animalPositionUpdate(this.x,this.y,this.z);
+
+                        alive_array[x].position.set(this.x,this.y,this.z);
+
+                    }
+                }
+            }
+
+
+
+
         }
         function animals_interact(){
             /*
