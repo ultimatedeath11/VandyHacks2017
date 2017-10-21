@@ -58,12 +58,13 @@
               <option value="5">5</option>
               <option value="6">6</option>
             </select>
-            <select = name="length" onchange="getLengthTime();">
+            <select name="length" onchange="getLengthTime();">
                 <option value="days">Days</option>
                 <option value="weeks">Weeks</option>
                 <option value="month">Month</option>
                 <option value="year">Year</option>
             </select>
+            <input type="button" name="Submit" value="Subscribe" />
         </form>
     </div>
     <div class="footer">
@@ -75,10 +76,13 @@
         var selectedValueNumber = document.getElementById("number").value;
         console.log(selectedValueNumber);
     }
+
+
     function getLengthTime(){
         var selectedLengthTime = document.getElementById("length").value;
         console.log(selectedValueNumber);
     }
+
     </script>
 </body>
 </html>

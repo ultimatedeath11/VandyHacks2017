@@ -12,11 +12,15 @@
 </head><body>
 
     <?php
+
     //PHP for length of time to exist and be passed into the code.
     ?>
 
     <div id="output"></div>
     <script>
+
+    
+
     //---------------------Scene---------------------------//
     var scene = new THREE.Scene();
     //---------------------Camera--------------------------//
