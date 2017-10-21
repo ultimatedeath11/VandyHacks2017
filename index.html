@@ -4,31 +4,73 @@
     <title>simulation querry</title>
     <script src="../resources/three.js"></script>
     <style>
-        body {
+        *{
+            box-sizing: border-box;
+        }
+        body{
             margin:0;
+        }
+        .topnav{
             overflow:hidden;
+            background-color: #6495ed;
+        }
+        .topnav a {
+            float:left;
+            display: block;
+            color: #dc143c;
+            text-align: center;
+            padding: 15px 15px;
+            text-decoration: none;
+        }
+        .topnav a:hover{
+            background-color: #1e90ff;
+            color: black;
+        }
+        .content{
+            background-color: #0a3e66;
+        }
+        #text{
+            color: #ffffff;
+        }
+        .footer{
+            background-color: #708090;
+            padding: 10px;
         }
     </style>
-</head><body>
-    <form class="Simulation runner" action="index.php" method="post">
-        How long shall we simulate today?
 
-        <select name="number">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-        </select>
-        <select>
-            <option value="days">days</option>
-            <option value="weeks">weeks</option>
-            <option value="month">month</option>
-            <option value="year">year</option>
-        </select>
-        <!-- TODO: write a button for submitting it to the PHP and redirect to the correct page. -->
-    </form>
+</head><body>
+    <div class="topnav">
+      <a href="#">Link</a>
+      <a href="#">Link</a>
+      <a href="#">Link</a>
+    </div>
+    <div class="content">
+        <h1  id="text">Hey guys!!!</h1>
+        <h2 id="text">We are Union Hack, and we are from union university, Jackson TN</h2>
+        <form class="Simulation runner" action="index.php" method="post">
+            <h4 id="text">How long shall we simulate today?</h4>
+
+            <select name="number">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+            <select>
+                <option value="days">days</option>
+                <option value="weeks">weeks</option>
+                <option value="month">month</option>
+                <option value="year">year</option>
+            </select>
+            <!-- TODO: write a button for submitting it to the PHP and redirect to the correct page. -->
+        </form>
+    </div>
+    <div class="footer">
+      <p>Footer</p>
+    </div>
+
     <script>
 
     </script>
