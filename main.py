@@ -18,5 +18,5 @@ class Environment():
         ##initialize environmental variables:
         print("}")
 new_environment = Environment()
-main = Main(10)
+main = Main(10) #ending number
 main.mainloop()
