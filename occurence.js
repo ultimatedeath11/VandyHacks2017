@@ -32,7 +32,10 @@ function days (fun){
                 animals_interact();
             }
             if(boolArray[2] == true){
-                rain();
+                rain(true);
+            }
+            if (boolArray[2] == false) {
+                rain(false);
             }
             if(boolArray[3] == true){
                 sandstorm();
@@ -77,28 +80,60 @@ function days (fun){
             TODO each animal should be listed with a Boolean of preditor
             TODO if one is preditor & one prey prey dies, if both preditor they go away from each other if both prey they stick together
             */
+            if (this.animal.getPosition == animal.getPosition) {
+                interact(math.random * 10);
+                interact(x){
+                    if (x == 6) {
+                        this.animal_moves();
+                    }else if (x % 2){
+                        this.animal.dies();
+                    }
+                    else if(x % 3){
+                        this.animal_moves();
+                    }
+                }
+            }
+
         }
-        function rain(){
+        function rain(x){
             /*
             TODO rain comparison to if it was rainning again today if it is increase probobility of rain tomorrow.
             TODO animals would not be able to do work or get food, and if it is true then movement speeed can't happen
             */
+            isRaining = x;
+            wasRaining = false;
+
+            if (x) {
+                run[2][1] = .30;
+                wasRaining = true;
+            }else {
+                run[2][1] = .1;
+                wasRaining = !wasRaining;
+            }
+
         }
-        function sandstorm(){
+        function flooding(){
             /*
             TODO define a range of areas that the storm will hit and if there are any living beings there, they should become dead, unles in shelter.
             */
+
+
         }
         function village(){
             /*
             TODO define the civilazation with number of humans, male and female, chance of people getting/ having children, and keeping a count.
             TODO give people the job of surviving like with food and water.
             */
+
+            var population = math.random() * 7; 
+            var village1 = new village.createVillage(x,y,z,population);
+
         }
         function familyGrowth(){
             /*
             TODO increase in population of any group in amimals
             */
+
         }
         function plantGrowth(){
             /*
