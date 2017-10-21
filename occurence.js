@@ -116,17 +116,24 @@ function days (fun){
             /*
             TODO define a range of areas that the storm will hit and if there are any living beings there, they should become dead, unles in shelter.
             */
+
+
         }
         function village(){
             /*
             TODO define the civilazation with number of humans, male and female, chance of people getting/ having children, and keeping a count.
             TODO give people the job of surviving like with food and water.
             */
+
+            var population = math.random() * 7; 
+            var village1 = new village.createVillage(x,y,z,population);
+
         }
         function familyGrowth(){
             /*
             TODO increase in population of any group in amimals
             */
+
         }
         function plantGrowth(){
             /*
