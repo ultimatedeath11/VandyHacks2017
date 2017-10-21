@@ -1,0 +1,39 @@
+<html>
+    <title>Environment</title>
+    <head>
+        <style>
+            body{
+                margin:0;
+                overflow:hidden;
+            }
+        </style>
+        <script src="resources/three.js"></script>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <div id="output"></div>
+        <script>
+            //Some Coders Really Like Marshmellows
+            //---------------------Scene---------------------------//
+            var scene = new THREE.Scene();
+            //---------------------Camera--------------------------//
+            var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+            //--------------------Renderer-------------------------//
+            var renderer = new THREE.WebGLRenderer();
+            renderer.setClearColor(new THREE.Color(0xEEEEEE, 1.0)); 
+			renderer.setSize(window.innerWidth, window.innerHeight);
+            document.getElementById("output").appendChild(renderer.domElement);
+            //---------------------Lights--------------------------//
+            var spotLight = new THREE.SpotLight();
+            //---------------------Model---------------------------//
+            var model;
+
+            renderScene();
+
+            function renderScene() {
+                requestAnimationFrame(renderScene);
+				renderer.render(scene, camera);
+			}
+        </script>
+    </body>
+</html>
