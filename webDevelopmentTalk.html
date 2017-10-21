@@ -5,13 +5,12 @@
 </head>
 <body>
     <div id="app">
-        <h1>{{value}}</h1>
         <ol>
             <li v-for="(item,index) in items">
                 {{item}} <button @click = "removeItem(index)" >X</button>
             </li>
         </ol>
-        <input v-model="value" placeholder = "Item to add" />
+        <input v-model="value" placeholder = "Item to add" @keyup.enter="addItem()" />
             <button @click="addItem()">Add Item</button>
     </div>
     <script>
