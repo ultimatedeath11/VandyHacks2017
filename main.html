@@ -31,24 +31,7 @@
             scene.add(spotLight);
             //---------------------Model---------------------------//
             var environment = new Environment();
-            var groundGeometry = new THREE.PlaneGeometry(100,100,100,100);
-            var verticeRaised = false;
-            groundGeometry.vertices.forEach(function(v) {
-                //create elevations function
-                if(Math.abs(v.x)<90){
-                    probability = 1/100;
-                    if(verticeRaised){
-                        probability = 1/50;
-                    }else{}
-                    if(Math.random()<=(probability)){
-                        verticeRaised = true;
-                        v.z*=1.6;
-                    }else{
-                        verticeRaised = false;
-                    }
-                }
-            }, this);
-            var ground = new THREE.Mesh(groundGeometry,new THREE.MeshLambertMaterial({shading: THREE.FlatShading, color:'green',side:THREE.DoubleSide}));
+            var ground = new THREE.Mesh(new THREE.PlaneGeometry(100,100),new THREE.MeshLambertMaterial({shading: THREE.FlatShading, color:'green',side:THREE.DoubleSide}));
             ground.rotateX(Math.PI/2);
             ground.position.set(0,0,0);
             environment.ground = ground;
