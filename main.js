@@ -37,5 +37,12 @@ function Trees(x,y,z){
     this.y = y;
     this.z = z;
     this.scale = 10;
+    this.trees = [];
+}
+function Tree(x,y,z){
+    this.x = x;
+    this.y = y;
+    this.z = z;
+    this.scale = 10;
     this.path = '..//Blender .js files/finished_tree.js';
 }
