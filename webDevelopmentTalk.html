@@ -11,28 +11,38 @@
             </li>
         </ol>
         <input v-model="value" placeholder = "Item to add" @keyup.enter="addItem()" />
-            <button @click="addItem()">Add Item</button>
+        <button @click="addItem()">Add Item</button>
     </div>
     <script>
-        new Vue({
-            el: '#app',
-            data:{
-                value: 'ayy lmo',
-                items: []
-            },
-            methods: {
-                addItem(){
-                    if(this.value.length > 0){
+    new Vue({
+        el: '#app',
+        data:{
+            value: 'ayy lmo',
+            items: []
+        },
+        mounted(){
+            if(window.localStorage.savedItems){
+                this.items = JSON.parse(window.localStorage.savedItems);
+            }
+        },
+        methods: {
+            addItem(){
+                if(this.value.length > 0){
                     this.items.push(this.value);
                     this.value = '';
                 }
-                },
-                removeItem(index){
-                    this.items.splice(index,1);
-                },
+            },
+            removeItem(index){
+                this.items.splice(index,1);
+            }
+        },
 
+            watch: {
+                items(){
+                    window.localStorage.savedItems = JSON.stringify(this.items);
+                }
             }
         });
-    </script>
-</body>
-</html>
+        </script>
+    </body>
+    </html>
