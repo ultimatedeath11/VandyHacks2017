@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{value}}</h1>
+        <ol>
+            <li v-for="item in items">
+                {{item}} <button>X</button>
+            </li>
+        </ol>
+        <input v-model="value" placeholder = "Item to add" />
+            <button @click="addItem()">Add Item</button>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data:{
+                value: 'ayy lmo',
+                items: []
+            },
+            methods: {
+                addItem(){
+                    this.items.push(this.value);
+                    this.value = '';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
