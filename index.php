@@ -10,7 +10,7 @@
     <script src="resources/three.js"></script>
     <script src="main.js"></script>
 </head><body>
-    
+
     <?php
     //PHP for length of time to exist and be passed into the code.
     ?>
@@ -43,7 +43,7 @@
             probability = 1/100;
             if(verticeRaised){
                 probability = 1/50;
-            }else{}
+            }else{}//joel is rewritting this at moment
             if(Math.random()<=(probability)){
                 verticeRaised = true;
                 v.z*=1.6;
