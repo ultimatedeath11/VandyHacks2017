@@ -15,5 +15,5 @@ class Main():
             print("Time: "+str(self.current_time))
             self.current_time +=1
             time.sleep(1)
-main = Main(int(input("Enter # of days: "))) #ending number
+main = Main(int(input("Enter # of days: "))-1) #ending number
 main.mainloop()
