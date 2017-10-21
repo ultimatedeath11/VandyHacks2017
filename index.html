@@ -19,7 +19,7 @@
             display: block;
             color: #dc143c;
             text-align: center;
-            padding: 15px 15px;
+            padding: 15px 15    px;
             text-decoration: none;
         }
         .topnav a:hover{
@@ -50,7 +50,7 @@
         <form class="Simulation runner" action="index.php" method="post">
             <h4 id="text">How long shall we simulate today?</h4>
 
-            <select name="number">
+            <select name="number" onchange="getTime();">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -58,13 +58,12 @@
               <option value="5">5</option>
               <option value="6">6</option>
             </select>
-            <select>
-                <option value="days">days</option>
-                <option value="weeks">weeks</option>
-                <option value="month">month</option>
-                <option value="year">year</option>
+            <select = name="length" onchange="getLengthTime();">
+                <option value="days">Days</option>
+                <option value="weeks">Weeks</option>
+                <option value="month">Month</option>
+                <option value="year">Year</option>
             </select>
-            <!-- TODO: write a button for submitting it to the PHP and redirect to the correct page. -->
         </form>
     </div>
     <div class="footer">
@@ -72,7 +71,14 @@
     </div>
 
     <script>
-
+    function getTime(){
+        var selectedValueNumber = document.getElementById("number").value;
+        console.log(selectedValueNumber);
+    }
+    function getLengthTime(){
+        var selectedLengthTime = document.getElementById("length").value;
+        console.log(selectedValueNumber);
+    }
     </script>
 </body>
 </html>
