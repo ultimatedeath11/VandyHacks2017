@@ -22,12 +22,15 @@
             },
             methods: {
                 addItem(){
+                    if(this.value.length > 0){
                     this.items.push(this.value);
                     this.value = '';
+                }
                 },
                 removeItem(index){
                     this.items.splice(index,1);
-                }
+                },
+
             }
         });
     </script>
