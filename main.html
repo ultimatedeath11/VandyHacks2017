@@ -73,8 +73,7 @@
                     }else if(this_rand<.75){
                         this_terrain = new Forest(x,0,z);
                     }else{
-                        this_terrain = new Forest(x,0,z);
-                        //this_terrain = new Plain(x,0,z);
+                        this_terrain = new Plain(x,0,z);
                     }
                     loader.load(this_terrain.path,onModelLoad);
                     environment.terrainQuadrants.push(this_terrain);
