@@ -24,7 +24,7 @@
             scene.add(camera);
             //--------------------Renderer-------------------------//
             var renderer = new THREE.WebGLRenderer();
-            renderer.setClearColor(new THREE.Color('skyblue')); 
+            renderer.setClearColor(new THREE.Color('skyblue'));
 			renderer.setSize(window.innerWidth, window.innerHeight);
             document.getElementById("output").appendChild(renderer.domElement);
             //---------------------Lights--------------------------//
@@ -61,7 +61,7 @@
                     return true;
                 }
             }
-            //---Initialize Terrain---//
+            //---Initialize Terrain By looping through [][]---//
             var this_terrain;
             var this_rand = 0;
             for(x=-90;x<=90;x+=60){
@@ -113,8 +113,8 @@
                 if(setup){
                     init();
                 }
-                camera.position.x = 250*Math.sin(step);
-                camera.position.z = 250*Math.cos(step);
+                camera.position.x = 250 * Math.sin(step);
+                camera.position.z = 250 * Math.cos(step);
                 //spotLight.position.x = camera.position.x;
                 //spotLight.position.y = camera.position.y;
                 camera.lookAt(scene.position);
