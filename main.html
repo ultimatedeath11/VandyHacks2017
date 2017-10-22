@@ -71,11 +71,11 @@
                     }else if(this_rand<.5){
                         this_terrain = new Lake(x,0,z);
                     }else if(this_rand<.75){
-                        this_terrain = new Lake(x,0,z);
-                        //this_terrain = new Forest(x,0,z);
+                        //this_terrain = new Lake(x,0,z);
+                        this_terrain = new Forest(x,0,z);
                     }else{
-                        this_terrain = new Mountain(x,0,z);
-                        //this_terrain = new Plain(x,0,z);
+                        //this_terrain = new Mountain(x,0,z);
+                        this_terrain = new Plain(x,0,z);
                     }
                     console.log(this_terrain);
                     console.log(x,z);
@@ -102,6 +102,7 @@
             function init(){
                 if(numObjects == environment.objects.length){
                     environment.objects.forEach(function(obj) {
+                        console.log(obj,scene.children[environment.objects.indexOf(obj)+objIndex]);
                         obj.object = scene.children[environment.objects.indexOf(obj)+objIndex];
                         //alert(obj.scale);
                         obj.object.scale.set(obj.scale,obj.scale,obj.scale);

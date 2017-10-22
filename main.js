@@ -2,7 +2,7 @@
 Create classes: Environment, Event and Event's Children, each blender object in the lib file
 
 */
-var terrainScale = 2;
+var terrainScale = 3.5;
 function Environment(){
     //introduce environmental variables here:
     this.ground; //base plane for world
@@ -54,7 +54,7 @@ function Plain(x,y,z){
     this.y = y;
     this.z = z;
     this.scale = terrainScale;
-    this.path = '/Blender .js files/Plain.js';
+    this.path = '/Blender .js files/Plane.js';
 }
 function Tree(x,y,z){
     this.object = new THREE.Mesh();
