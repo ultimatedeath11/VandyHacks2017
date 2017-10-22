@@ -55,7 +55,7 @@
             //---Within Function---//
             function within(obj1,obj2){
                 //takes two objects with x y coordinates and determines of obj2 is within obj1
-                if(obj2.x<obj1.x-30||obj2.x>obj1.x+30||obj2.z<obj1.z-30||obj2.z>obj1.z+30){
+                if(obj2.x < obj1.x-30 || obj2.x > obj1.x + 30 || obj2.z < obj1.z - 30 || obj2.z > obj1.z + 30){
                     return false;
                 }else{
                     return true;
@@ -91,9 +91,9 @@
                     environment.objects.forEach(function(obj) {
                         obj.object = scene.children[environment.objects.indexOf(obj)+objIndex];
                         //Rotate Terrain Tiles randomly:
-                        if(environment.terrainQuadrants.indexOf(obj)>-1){
+                        if(environment.terrainQuadrants.indexOf(obj) > -1){
                             var rand = Math.random();
-                            if(rand<.33){
+                            if(rand < .25){
                                 obj.object.rotateY(Math.PI/2);
                             }else if(rand<.66){
                                 obj.object.rotateY(-1*Math.PI/2);
