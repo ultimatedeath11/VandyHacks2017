@@ -73,35 +73,34 @@
                     }else if(this_rand<.75){
                         this_terrain = new Forest(x,0,z);
                     }else{
-                        this_terrain = new Mountain(x,0,z);
+                        this_terrain = new Forest(x,0,z);
                         //this_terrain = new Plain(x,0,z);
                     }
                     loader.load(this_terrain.path,onModelLoad);
+                    environment.terrainQuadrants.push(this_terrain);
                     environment.objects.push(this_terrain);
                 }
             }
             //---Object Instantiations---//
-            //var myMount = new Mountain(0,10,0);
-            //loader.load(myMount.path,onModelLoad);
-            //environment.objects.push(myMount);
-            //var myLake = new Lake(-100,10,-100);
-            //loader.load(myLake.path,onModelLoad);
-            //environment.objects.push(myLake);
-            //var myTree = new Tree(100,10,100);
-            //loader.load(myTree.path,onModelLoad);
-            //environment.objects.push(myTree);
-            //var myCow = new Animal(100,10,-100);
-            //loader.load(myCow.path,onModelLoad);
-            //environment.objects.push(myCow);
-            //environment.animateObjects.push(myCow);
+            //instantiate animate objects
+
             var step = 0;
             renderScene();
             function init(){
                 if(numObjects == environment.objects.length){
                     environment.objects.forEach(function(obj) {
-                        //console.log(obj,scene.children[environment.objects.indexOf(obj)+objIndex]);
                         obj.object = scene.children[environment.objects.indexOf(obj)+objIndex];
-                        //alert(obj.scale);
+                        //Rotate Terrain Tiles randomly:
+                        if(environment.terrainQuadrants.indexOf(obj)>-1){
+                            var rand = Math.random();
+                            if(rand<.33){
+                                obj.object.rotateY(Math.PI/2);
+                            }else if(rand<.66){
+                                obj.object.rotateY(-1*Math.PI/2);
+                            }else{
+                                obj.object.rotateY(Math.PI);
+                            }
+                        }
                         obj.object.scale.set(obj.scale,obj.scale,obj.scale);
                         obj.object.position.set(obj.x,obj.y,obj.z);
                     }, this);
@@ -112,12 +111,13 @@
                 if(setup){
                     init();
                 }
-                //camera.position.x = 150*Math.sin(step);
-                //camera.position.z = 150*Math.cos(step);
+                camera.position.x = 250*Math.sin(step);
+                camera.position.z = 250*Math.cos(step);
                 //spotLight.position.x = camera.position.x;
                 //spotLight.position.y = camera.position.y;
-                //camera.lookAt(scene.position);
-                //step+=.02;
+                camera.lookAt(scene.position);
+                step+=.02;
+                environment.update();
                 requestAnimationFrame(renderScene);
 				renderer.render(scene, camera);
             }
