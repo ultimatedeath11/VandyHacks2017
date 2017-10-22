@@ -24,7 +24,7 @@ function Environment(){
 function Prey(obj){
     /*
         Determine movement based on:
-        1) Food 
+        1) Food
         2) Safety/avoid predators
         3) Proximity of others of the same species
     */
@@ -32,7 +32,7 @@ function Prey(obj){
 function Predators(obj){
     /*
         Determine movement based on:
-        1) Prey/Food 
+        1) Prey/Food
         2) Shelter
         3) Proximity of others of the same species
     */
@@ -81,8 +81,8 @@ function Predators(obj){
     console.log(options);
 }
 function quadCoordinates(quadrant){
-    var x = quadrant.x+(30*Math.random());
-    var z = quadrant.z+(30*Math.random());
+    var x = (quadrant.x - 30) + (60*Math.random());
+    var z = (quadrant.z - 30) + (60*Math.random());
     var y;
     quadrant.geometry.vertices.forEach(function(v){
         if(v.x-x<.01&&v.z-z<.01){
