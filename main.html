@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <html>
     <title>Environment</title>
     <head>
@@ -51,38 +52,45 @@
             //---Within Function---//
             function within(obj1,obj2){
                 //takes two objects with x y coordinates and determines of obj2 is within obj1
-                
+                if(obj2.x<obj1.x-30||obj2.x>obj1.x+30||obj2.z<obj1.z-30||obj2.z>obj1.z+30){
+                    return false;
+                }else{
+                    return true;
+                }
             }
             //---Initialize Terrain---//
-            var map = [[]];
-            for(x=0;x<4;x++){
-                for(z=0;z<4;z++){
+            for(x=-90;x<=90;x+=60){
+                for(z=-90;z<=90;z+=60){
                     this_rand = Math.random();
                     if(this_rand<.25){
-                        this_terrain = new Mountain();
+                        this_terrain = new Mountain(x,0,z);
                     }else if(this_rand<.5){
-
+                        this_terrain = new Lake(x,0,z);
                     }else if(this_rand<.75){
-
+                        this_terrain = new Lake(x,0,z);
+                        //this_terrain = new Forest(x,0,z);
                     }else{
-
+                        this_terrain = new Mountain(x,0,z);
+                        //this_terrain = new Plain(x,0,z);
                     }
+                    loader.load(this_terrain.path,onModelLoad);
+                    environment.objects.push(this_terrain);
                 }
             }
             //---Object Instantiations---//
-            var myMount = new Mountain(0,10,0);
-            loader.load(myMount.path,onModelLoad);
-            environment.objects.push(myMount);
-            var myLake = new Lake(-100,10,-100);
-            loader.load(myLake.path,onModelLoad);
-            environment.objects.push(myLake);
+            //var myMount = new Mountain(0,10,0);
+            //loader.load(myMount.path,onModelLoad);
+            //environment.objects.push(myMount);
+            //var myLake = new Lake(-100,10,-100);
+            //loader.load(myLake.path,onModelLoad);
+            //environment.objects.push(myLake);
             //var myTree = new Tree(100,10,100);
             //loader.load(myTree.path,onModelLoad);
             //environment.objects.push(myTree);
-            var myCow = new Animal(100,10,-100);
-            loader.load(myCow.path,onModelLoad);
-            environment.objects.push(myCow);
-            environment.animateObjects.push(myCow);
+            //var myCow = new Animal(100,10,-100);
+            //loader.load(myCow.path,onModelLoad);
+            //environment.objects.push(myCow);
+            //environment.animateObjects.push(myCow);
             var step = 0;
             renderScene();
             function init(){
