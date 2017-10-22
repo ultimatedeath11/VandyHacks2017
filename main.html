@@ -37,8 +37,10 @@
             //---JSON Loader---//
             var loader = new THREE.JSONLoader();
             var thisMesh;
+            var thisMaterialIndex = 0;
             function onModelLoad(geom,mat){
-                thisMesh = new THREE.Mesh(geom,mat[0]);
+                console.log(mat);
+                thisMesh = new THREE.Mesh(geom,mat[thisMaterialIndex]);
                 scene.add(thisMesh);
                 numObjects++; // count for line 64
             }
@@ -68,17 +70,21 @@
                     this_rand = Math.random();
                     if(this_rand<.25){
                         this_terrain = new Mountain(x,0,z);
+                        thisMaterialIndex = 0;
                     }else if(this_rand<.5){
                         this_terrain = new Lake(x,0,z);
+                        thisMaterialIndex = 0;
                     }else if(this_rand<.75){
                         //this_terrain = new Lake(x,0,z);
                         this_terrain = new Forest(x,0,z);
+                        thisMaterialIndex = 3;
                     }else{
-                        //this_terrain = new Mountain(x,0,z);
-                        this_terrain = new Plain(x,0,z);
+                        this_terrain = new Mountain(x,0,z);
+                        thisMaterialIndex = 0;
+                        //this_terrain = new Plain(x,0,z);
                     }
-                    console.log(this_terrain);
-                    console.log(x,z);
+                    //console.log(this_terrain);
+                    //console.log(x,z);
                     loader.load(this_terrain.path,onModelLoad);
                     environment.objects.push(this_terrain);
                 }
@@ -102,7 +108,7 @@
             function init(){
                 if(numObjects == environment.objects.length){
                     environment.objects.forEach(function(obj) {
-                        console.log(obj,scene.children[environment.objects.indexOf(obj)+objIndex]);
+                        //console.log(obj,scene.children[environment.objects.indexOf(obj)+objIndex]);
                         obj.object = scene.children[environment.objects.indexOf(obj)+objIndex];
                         //alert(obj.scale);
                         obj.object.scale.set(obj.scale,obj.scale,obj.scale);
