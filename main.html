@@ -44,11 +44,13 @@
             }
             //---Environment---//
             var environment = new Environment();
+            /*
             var ground = new THREE.Mesh(new THREE.PlaneGeometry(250,250),new THREE.MeshLambertMaterial({shading: THREE.FlatShading, color:'green',side:THREE.DoubleSide}));
             ground.rotateX(Math.PI/2);
             ground.position.set(0,0,0);
             environment.ground = ground;
             scene.add(ground);
+            */
             //---Within Function---//
             function within(obj1,obj2){
                 //takes two objects with x y coordinates and determines of obj2 is within obj1
@@ -59,6 +61,8 @@
                 }
             }
             //---Initialize Terrain---//
+            var this_terrain;
+            var this_rand = 0;
             for(x=-90;x<=90;x+=60){
                 for(z=-90;z<=90;z+=60){
                     this_rand = Math.random();
@@ -73,6 +77,8 @@
                         this_terrain = new Mountain(x,0,z);
                         //this_terrain = new Plain(x,0,z);
                     }
+                    console.log(this_terrain);
+                    console.log(x,z);
                     loader.load(this_terrain.path,onModelLoad);
                     environment.objects.push(this_terrain);
                 }
@@ -98,7 +104,7 @@
                     environment.objects.forEach(function(obj) {
                         obj.object = scene.children[environment.objects.indexOf(obj)+objIndex];
                         //alert(obj.scale);
-                        //obj.object.scale.set(obj.scale,obj.scale,obj.scale);
+                        obj.object.scale.set(obj.scale,obj.scale,obj.scale);
                         obj.object.position.set(obj.x,obj.y,obj.z);
                     }, this);
                     setup=false;

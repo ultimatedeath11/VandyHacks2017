@@ -2,7 +2,7 @@
 Create classes: Environment, Event and Event's Children, each blender object in the lib file
 
 */
-var terrainScale = 20;
+var terrainScale = 2;
 function Environment(){
     //introduce environmental variables here:
     this.ground; //base plane for world
