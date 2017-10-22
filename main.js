@@ -117,59 +117,9 @@ function Predators(obj){
         choice = options[choice];
         var coords = quadCoordinates(environment.terrainQuadrants[choice]);
         move(obj,coords);
-<<<<<<< HEAD
-=======
-
-    });
-    console.log(options);
-}
-
-function Prey(obj){
-    /*
-    Determine movement based on:
-    1) Prey/Food
-    2) Shelter
-    3) Proximity of others of the same species
-*/
-//determine movement options:
-var options = [];
-var add;
-var keep;
-environment.terrainQuadrants.forEach(function(q){
-    add = false;
-    var iOfQ = environment.terrainQuadrants.indexOf(q); // set var to index of Quadrant
-    var iOfObj = environment.terrainQuadrants.indexOf(obj.quadrant);//set var to index of obj.quadrant in terrain quadrants
-    if(iOfQ-1 == iOfObj||iOfQ+1 == iOfObj ||iOfQ-4 == iOfObj ||iOfQ+4 == iOfObj){
-        add = true;
-    }
-});
-//narrow down option list based on food, shelter, others
-options.forEach(function(option){
-
-    keep = false;
-    //3) shelter TODO go over this
-    if(environment.terrainQuadrants[options].__class__ == obj.home){
-        keep = true;
-    }else{
-        options.remove(environment.terrainQuadrants.indexOf(environment.terrainQuadrants[options]));
-    }//TODO check V to see if it is true
-    /*if(environment.objectsInQuadrant[option].forEach(class=='grain'){
-        //couldn't think of the word that was to go in the 'grain' spot
-        keep = true;
-    }
-    */
-    environment.objectsInQuadrant[option].forEach(function(o){
-
-        //2) others TODO classes may be the death of us
-        if(o.__class__==obj.__class__&&keep!=true){
-            keep = true;
-        }
-        if(!keep){
-            options.remove(environment.terrainQuadrants.indexOf(environment.terrainQuadrants[options]));
-        }
->>>>>>> b8ebc915dfde7c6910cc97dafe6af08068ade463
     });
 }
+
 function quadCoordinates(quadrant){
     var x = (quadrant.x - 30) + (60*Math.random());
     var z = (quadrant.z - 30) + (60*Math.random());
