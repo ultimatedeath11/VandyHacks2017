@@ -46,10 +46,17 @@ function Predators(obj){
         if(iOfQ-1 == iOfObj||iOfQ+1 == iOfObj ||iOfQ-4 == iOfObj ||iOfQ+4 == iOfObj){
             add = true;
         }
+        if(add){
+            options.push(iOfQ);}
     });
     //narrow down option list based on food, shelter, others
     options.forEach(function(option){
-        
+        //3) Food
+        //if(){}
+        //2) others
+        //if(){}
+        //3) shelter
+        //if(){}
     });
     console.log(options);
 }
