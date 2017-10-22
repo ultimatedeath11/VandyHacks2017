@@ -76,7 +76,7 @@ function Predators(obj){
         var choice = Math.random()*options;
         choice = options[choice];
         var coords = quadCoordinates(environment.terrainQuadrants[choice]);
-        obj.move(coords);
+        move(obj,coords);
     });
     console.log(options);
 }
@@ -89,8 +89,15 @@ function quadCoordinates(quadrant){
               y = v.y;
         }
     });
-    return [x,z];
+    return [x,y,z];
 }
+function move(obj,coords){
+    obj.x = coords[0];
+    obj.y = coords[1];
+    obj.z = coords[2];
+    obj.object.position.x = obj.x;
+    obj.object.position.y = obj.y;
+    obj.object.position.z = obj.z;
 // ---Generic Object Classes---
 function Mountain(x,y,z){
     this.object = new THREE.Mesh();
@@ -154,11 +161,6 @@ function Cow(x,y,z){
     this.scale = 10;
     this.home = new Plain();
     this.path = '/Blender .js files/cow.js';
-    this.move = function(coords){
-        this.x = coords[0];
-        this.y = coords[1];
-        this.z = coords[2];
-    }
 }
 function Horse(x,y,z){
     this.animate = function(){Prey(this)};
