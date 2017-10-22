@@ -52,7 +52,7 @@ function Predators(obj){
     options.forEach(function(option){
 
         keep = false;
-        //3) shelter
+        //3) shelter TODO go over this
         if(environment.terrainQuadrants[options].__class__ == obj.home){
             keep = true;
         }else{
@@ -63,7 +63,7 @@ function Predators(obj){
             if(o.class=='prey'){
                 keep = true;
             }
-            //2) others
+            //2) others TODO classes may be the death of us
             if(o.__class__==obj.__class__&&keep!=true){
                 keep = true;
             }
