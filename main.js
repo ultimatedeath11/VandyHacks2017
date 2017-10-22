@@ -40,9 +40,18 @@ function Trees(x,y,z){
     this.trees = [];
 }
 function Tree(x,y,z){
+    this.object = new THREE.Mesh();
     this.x = x;
     this.y = y;
     this.z = z;
     this.scale = 10;
     this.path = '..//Blender .js files/finished_tree.js';
+}
+function Animal(x,y,z){
+    this.object = new THREE.Mesh();
+    this.x = x;
+    this.y = y;
+    this.z = z;
+    this.scale = 10;
+    this.path = '..//Blender .js files/cow-mini.js'
 }
