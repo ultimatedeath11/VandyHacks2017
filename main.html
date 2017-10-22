@@ -48,7 +48,27 @@
             ground.position.set(0,0,0);
             environment.ground = ground;
             scene.add(ground);
-            
+            //---Within Function---//
+            function within(obj1,obj2){
+                //takes two objects with x y coordinates and determines of obj2 is within obj1
+                
+            }
+            //---Initialize Terrain---//
+            var map = [[]];
+            for(x=0;x<4;x++){
+                for(z=0;z<4;z++){
+                    this_rand = Math.random();
+                    if(this_rand<.25){
+                        this_terrain = new Mountain();
+                    }else if(this_rand<.5){
+
+                    }else if(this_rand<.75){
+
+                    }else{
+
+                    }
+                }
+            }
             //---Object Instantiations---//
             var myMount = new Mountain(0,10,0);
             loader.load(myMount.path,onModelLoad);
@@ -56,9 +76,9 @@
             var myLake = new Lake(-100,10,-100);
             loader.load(myLake.path,onModelLoad);
             environment.objects.push(myLake);
-            var myTree = new Tree(100,10,100);
-            loader.load(myTree.path,onModelLoad);
-            environment.objects.push(myTree);
+            //var myTree = new Tree(100,10,100);
+            //loader.load(myTree.path,onModelLoad);
+            //environment.objects.push(myTree);
             var myCow = new Animal(100,10,-100);
             loader.load(myCow.path,onModelLoad);
             environment.objects.push(myCow);
