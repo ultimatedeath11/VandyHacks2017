@@ -20,6 +20,16 @@ Potiential Problems we will need to overcome:
 Things to be to to inclue in envornment: 
   -flatplane or someshape 
     - look into perlanoise
+<<<<<<< HEAD
+  - water
+    - randomizing x,y,z coordinates
+    - shape & size of the water
+  - elivation
+    - how that will effect the water flow
+    - if above a certian altitude threaten life, snow, & civilazation
+  - civilazation
+    - number of people (both male and famale)
+=======
   -water
     -randomizing x,y,z coordinates
     -shape & size of the water
@@ -28,6 +38,7 @@ Things to be to to inclue in envornment:
     -if above a certian altitude threaten life, snow, & civilazation
   -civilazation
     - # of people (both male and famale)
+>>>>>>> parent of c09469b... formatted readme
   - natureal animals in the envornment
     - animals movement in relation to food & water
     -hibernation
@@ -37,6 +48,8 @@ Things to be to to inclue in envornment:
     -vegitation that can grow, and if it is edible
     - different seasons that could grow. 
 
-
+Our website: 
+http://bit.ly/2xWTlMd
+(Note in Vanderbuilt a VPN is required to visit page as there is a problem with it loading.)
 
 hi
