@@ -95,10 +95,12 @@
                             var rand = Math.random();
                             if(rand < .25){
                                 obj.object.rotateY(Math.PI/2);
-                            }else if(rand<.66){
+                            }else if(rand < .50){
                                 obj.object.rotateY(-1*Math.PI/2);
-                            }else{
+                            }else if(rand < .75){
                                 obj.object.rotateY(Math.PI);
+                            }else {
+                                obj.object.rotateY(Math.PI * 2);
                             }
                         }
                         obj.object.scale.set(obj.scale,obj.scale,obj.scale);
