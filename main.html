@@ -32,40 +32,46 @@
             //---------------------Model---------------------------//
             var setup = true;
             var objIndex = scene.children.length;
+            var numObjects = 0;
             //---JSON Loader---//
             var loader = new THREE.JSONLoader();
             var thisMesh;
             function onModelLoad(geom,mat){
                 thisMesh = new THREE.Mesh(geom,mat[0]);
                 scene.add(thisMesh);
+                numObjects++; // count for line 64
             }
             //---Environment---//
             var environment = new Environment();
-            /*var ground = new THREE.Mesh(new THREE.PlaneGeometry(250,250),new THREE.MeshLambertMaterial({shading: THREE.FlatShading, color:'green',side:THREE.DoubleSide}));
+            var ground = new THREE.Mesh(new THREE.PlaneGeometry(250,250),new THREE.MeshLambertMaterial({shading: THREE.FlatShading, color:'green',side:THREE.DoubleSide}));
             ground.rotateX(Math.PI/2);
             ground.position.set(0,0,0);
             environment.ground = ground;
             scene.add(ground);
-            */
+            
             //---Object Instantiations---//
-            //var myMount = new Mountain(0,0,0);
-            //loader.load(myMount.path,onModelLoad);
-            //environment.objects.push(myMount);
-            //var myLake = new Lake(0,0,0);
-            //loader.load(myLake.path,onModelLoad);
-            //environment.objects.push(myLake);
-            var myTree = new Tree(0,0,0);
+            var myMount = new Mountain(0,10,0);
+            loader.load(myMount.path,onModelLoad);
+            environment.objects.push(myMount);
+            var myLake = new Lake(-100,10,-100);
+            loader.load(myLake.path,onModelLoad);
+            environment.objects.push(myLake);
+            var myTree = new Tree(100,10,100);
             loader.load(myTree.path,onModelLoad);
             environment.objects.push(myTree);
-            //var step = 0;
+            var myCow = new Animal(100,10,-100);
+            loader.load(myCow.path,onModelLoad);
+            environment.objects.push(myCow);
+            environment.animateObjects.push(myCow);
+            var step = 0;
             renderScene();
             function init(){
-                if(thisMesh){
+                if(numObjects == environment.objects.length){
                     environment.objects.forEach(function(obj) {
                         obj.object = scene.children[environment.objects.indexOf(obj)+objIndex];
-                        obj.object.scale.set(obj.scale,obj.scale,obj.scale);
+                        //alert(obj.scale);
+                        //obj.object.scale.set(obj.scale,obj.scale,obj.scale);
                         obj.object.position.set(obj.x,obj.y,obj.z);
-                        objIndex+=1;
                     }, this);
                     setup=false;
                 }
