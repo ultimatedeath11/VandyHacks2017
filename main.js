@@ -2,12 +2,13 @@
 Create classes: Environment, Event and Event's Children, each blender object in the lib file
 
 */
+var terrainScale = 20;
 function Environment(){
     //introduce environmental variables here:
-
     this.ground; //base plane for world
     this.objects = []; // array to hold objects for reference
-    this.animateObjects = [] // array for all moving objects
+    this.animateObjects = []; // array for all moving objects
+    this.terrainQuadrants = [];
 }
 //Generic Event Function:
 function Event(){
@@ -17,30 +18,48 @@ function Event(){
 //Generic Object Classes:
 function Mountain(x,y,z){
     this.object = new THREE.Mesh();
+    this.width = 60;
+    this.height = 60;
     this.x = x;
     this.y = y;
     this.z = z;
-    this.scale = 15;
-    this.path = '..//Blender .js files/Mountain.js';
+    this.scale = terrainScale;
+    this.path = '/Blender .js files/Mountain.js';
 }
 function Lake(x,y,z){
     this.object = new THREE.Mesh();
+    this.width = 60;
+    this.height = 60;
     this.x = x;
     this.y = y;
     this.z = z;
-    this.scale = 10;
-    this.path = '..//Blender .js files/Lake.js';
+    this.scale = terrainScale;
+    this.path = '/Blender .js files/Lake.js';
 }
-function Trees(x,y,z){
+function Forest(x,y,z){
     this.object = new THREE.Mesh();
+    this.width = 60;
+    this.height = 60;
     this.x = x;
     this.y = y;
     this.z = z;
-    this.scale = 10;
-    this.trees = [];
+    this.scale = terrainScale;
+    this.path = '/Blender .js files/Forest.js'
+}
+function Plain(x,y,z){
+    this.object = new THREE.Mesh();
+    this.width = 60;
+    this.height = 60;
+    this.x = x;
+    this.y = y;
+    this.z = z;
+    this.scale = terrainScale;
+    this.path = '/Blender .js files/Plain.js';
 }
 function Tree(x,y,z){
     this.object = new THREE.Mesh();
+    this.width = 60;
+    this.height = 60;
     this.x = x;
     this.y = y;
     this.z = z;
