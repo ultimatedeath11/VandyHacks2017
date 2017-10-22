@@ -47,11 +47,10 @@ function Predators(obj){
         if(iOfQ-1 == iOfObj||iOfQ+1 == iOfObj ||iOfQ-4 == iOfObj ||iOfQ+4 == iOfObj){
             add = true;
         }
-        if(add){
-            options.push(iOfQ);}
     });
     //narrow down option list based on food, shelter, others
     options.forEach(function(option){
+
         keep = false;
         //3) shelter
         if(environment.terrainQuadrants[options].__class__ == obj.home){
@@ -77,6 +76,7 @@ function Predators(obj){
         choice = options[choice];
         var coords = quadCoordinates(environment.terrainQuadrants[choice]);
         move(obj,coords);
+ Sample Update
     });
     console.log(options);
 }
