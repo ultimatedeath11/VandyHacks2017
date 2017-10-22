@@ -82,7 +82,14 @@
             }
             //---Object Instantiations---//
             //instantiate animate objects
-
+            var my_coords = quadCoordinates(environment.terrainQuadrants[1]);
+            var myCow = new Cow(my_coords[0],my_coords[1],my_coords[2],environment.terrainQuadrants[1].object);
+            loader.load(myCow.path,onModelLoad);
+            environment.animateObjects.push(myCow);
+            environment.objects.push(myCow);
+            var currentTime = Date.now();
+            var time = Date.now();
+            var runtime = 10;
             var step = 0;
             renderScene();
             function init(){
@@ -112,13 +119,20 @@
                 if(setup){
                     init();
                 }
-                camera.position.x = 250 * Math.sin(step);
-                camera.position.z = 250 * Math.cos(step);
+                currentTime = Date.now();
+                if(currentTime-time==1 && runtime>0){
+                    environment.update();
+                    time = currentTime;
+                    runtime--;
+                }else{
+                    //simulation finished
+                }
+                //camera.position.x = 250 * Math.sin(step);
+                //camera.position.z = 250 * Math.cos(step);
                 //spotLight.position.x = camera.position.x;
                 //spotLight.position.y = camera.position.y;
-                camera.lookAt(scene.position);
-                step+=.02;
-                environment.update();
+                //camera.lookAt(scene.position);
+                //step+=.02;
                 requestAnimationFrame(renderScene);
 				renderer.render(scene, camera);
             }

@@ -2,10 +2,8 @@
 Create classes: Environment, Event and Event's Children, each blender object in the lib file
 
 */
-console.log("main.js loaded correctly");
 var terrainScale = 3;
 function Environment(){
-    console.log("main.js loaded correctly");
     //introduce environmental variables here:
     this.ground; //base plane for world
     this.objects = []; // array to hold objects for reference
@@ -23,7 +21,54 @@ function Environment(){
     }
 }
 // ---Genaric Animate Methods---
+function Prey(obj){
+    /*
+        Determine movement based on:
+        1) Food
+        2) Safety/avoid predators
+        3) Proximity of others of the same species
+    */
+    var options = [];
+    var add;
+    var keep;
+    environment.terrainQuadrants.forEach(function(q){
+        add = false;
+        var iOfQ = environment.terrainQuadrants.indexOf(q); // set var to index of Quadrant
+        var iOfObj = environment.terrainQuadrants.indexOf(obj.quadrant);//set var to index of obj.quadrant in terrain quadrants
+        if(iOfQ-1 == iOfObj||iOfQ+1 == iOfObj ||iOfQ-4 == iOfObj ||iOfQ+4 == iOfObj){
+            add = true;
+        }
+    });
+    //narrow down option list based on food, shelter, others
+    options.forEach(function(option){
 
+        keep = false;
+        //3) shelter TODO go over this
+        if(environment.terrainQuadrants[options].name== obj.home){
+            keep = true;
+        }else{
+            options.remove(environment.terrainQuadrants.indexOf(environment.terrainQuadrants[options]));
+        }
+        //3) Food
+        if(environment.terrainQuadrants[options].name=='Plain'){
+            keep = true;
+        }
+        environment.objectsInQuadrant[option].forEach(function(o){
+            //2) others TODO classes may be the death of us
+            if(o.__class__==obj.__class__&&keep!=true){
+                keep = true;
+            }
+            if(!keep){
+                options.remove(environment.terrainQuadrants.indexOf(environment.terrainQuadrants[options]));
+            }
+        });
+        //make random choice based on remaining options
+        var choice = Math.random()*options;
+        choice = options[choice];
+        var coords = quadCoordinates(environment.terrainQuadrants[choice]);
+        move(obj,coords);
+    });
+}
 function Predators(obj){
     /*
         Determine movement based on:
@@ -48,18 +93,19 @@ function Predators(obj){
 
         keep = false;
         //3) shelter TODO go over this
-        if(environment.terrainQuadrants[options].__class__ == obj.home){
+        if(environment.terrainQuadrants[options].name == obj.home){
             keep = true;
         }else{
             options.remove(environment.terrainQuadrants.indexOf(environment.terrainQuadrants[options]));
         }
+        
         environment.objectsInQuadrant[option].forEach(function(o){
             //3) Food
             if(o.class=='prey'){
                 keep = true;
             }
             //2) others TODO classes may be the death of us
-            if(o.__class__==obj.__class__&&keep!=true){
+            if(o.name==obj.name&&keep!=true){
                 keep = true;
             }
             if(!keep){
@@ -71,68 +117,13 @@ function Predators(obj){
         choice = options[choice];
         var coords = quadCoordinates(environment.terrainQuadrants[choice]);
         move(obj,coords);
-
     });
-    console.log(options);
-}
-
-function Prey(obj){
-    /*
-    Determine movement based on:
-    1) Prey/Food
-    2) Shelter
-    3) Proximity of others of the same species
-*/
-//determine movement options:
-var options = [];
-var add;
-var keep;
-environment.terrainQuadrants.forEach(function(q){
-    add = false;
-    var iOfQ = environment.terrainQuadrants.indexOf(q); // set var to index of Quadrant
-    var iOfObj = environment.terrainQuadrants.indexOf(obj.quadrant);//set var to index of obj.quadrant in terrain quadrants
-    if(iOfQ-1 == iOfObj||iOfQ+1 == iOfObj ||iOfQ-4 == iOfObj ||iOfQ+4 == iOfObj){
-        add = true;
-    }
-});
-//narrow down option list based on food, shelter, others
-options.forEach(function(option){
-
-    keep = false;
-    //3) shelter TODO go over this
-    if(environment.terrainQuadrants[options].__class__ == obj.home){
-        keep = true;
-    }else{
-        options.remove(environment.terrainQuadrants.indexOf(environment.terrainQuadrants[options]));
-    }//TODO check V to see if it is true
-    if(environment.objectsInQuadrant[option].forEach(class=='grain'){
-        //couldn't think of the word that was to go in the 'grain' spot
-        keep = true;
-    }
-    environment.objectsInQuadrant[option].forEach(function(o){
-
-        //2) others TODO classes may be the death of us
-        if(o.__class__==obj.__class__&&keep!=true){
-            keep = true;
-        }
-        if(!keep){
-            options.remove(environment.terrainQuadrants.indexOf(environment.terrainQuadrants[options]));
-        }
-    });
-    //make random choice based on remaining options
-    var choice = Math.random()*options;
-    choice = options[choice];
-    var coords = quadCoordinates(environment.terrainQuadrants[choice]);
-    move(obj,coords);
-
-});
-console.log(options);
 }
 function quadCoordinates(quadrant){
     var x = (quadrant.x - 30) + (60*Math.random());
     var z = (quadrant.z - 30) + (60*Math.random());
     var y;
-    quadrant.geometry.vertices.forEach(function(v){
+    quadrant.object.geometry.vertices.forEach(function(v){
         if(v.x-x<.01&&v.z-z<.01){
               y = v.y;
         }
@@ -199,34 +190,34 @@ function Tree(x,y,z){
     this.path = '..//Blender .js files/finished_tree.js';
 }
 //---Animate Objects---
-function Cow(x,y,z){
+function Cow(x,y,z,quadrant){
     this.animate = function(){Prey(this)};
     this.class = "prey";
-    this.quadrant;
+    this.quadrant = quadrant;
     this.object = new THREE.Mesh();
     this.x = x;
     this.y = y;
     this.z = z;
     this.scale = 10;
     this.home = new Plain();
-    this.path = '/Blender .js files/cow.js';
+    this.path = '/Blender .js files/cow-mini.js';
 }
-function Horse(x,y,z){
+function Horse(x,y,z,quadrant){
     this.animate = function(){Prey(this)};
     this.class = "prey";
-    this.quadrant;
+    this.quadrant = quadrant;;
     this.object = new THREE.Mesh();
     this.x = x;
     this.y = y;
     this.z = z;
     this.scale = 10;
     this.home = new Plain();
-    this.path = '/Blender .js files/horse.js';
+    this.path = '/Blender .js files/horse-mini.js';
 }
-function Goat(x,y,z){
+function Goat(x,y,z,quadrant){
     this.animate = function(){Prey(this)};
     this.class = "prey";
-    this.quadrant;
+    this.quadrant = quadrant;;
     this.object = new THREE.Mesh();
     this.x = x;
     this.y = y;
@@ -235,10 +226,10 @@ function Goat(x,y,z){
     this.home = new Mountain();
     this.path = '/Blender .js files/goat.js';
 }
-function Bear(x,y,z){
+function Bear(x,y,z,quadrant){
     this.animate = function(){Predators(this)};
     this.class = "prey";
-    this.quadrant;
+    this.quadrant = quadrant;;
     this.object = new THREE.Mesh();
     this.x = x;
     this.y = y;
@@ -247,10 +238,10 @@ function Bear(x,y,z){
     this.home = new Forest();
     this.path = '/Blender .js files/bear.js';
 }
-function Wolf(x,y,z){
+function Wolf(x,y,z,quadrant){
     this.animate = function(){Predators(this)};
     this.class = "prey";
-    this.quadrant;
+    this.quadrant = quadrant;;
     this.object = new THREE.Mesh();
     this.x = x;
     this.y = y;
