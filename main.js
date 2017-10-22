@@ -105,10 +105,11 @@ options.forEach(function(option){
     }else{
         options.remove(environment.terrainQuadrants.indexOf(environment.terrainQuadrants[options]));
     }//TODO check V to see if it is true
-    if(environment.objectsInQuadrant[option].forEach(class=='grain'){
+    /*if(environment.objectsInQuadrant[option].forEach(class=='grain'){
         //couldn't think of the word that was to go in the 'grain' spot
         keep = true;
     }
+    */
     environment.objectsInQuadrant[option].forEach(function(o){
 
         //2) others TODO classes may be the death of us
