@@ -46,8 +46,6 @@ function Prey(obj){
         //3) shelter TODO go over this
         if(environment.terrainQuadrants[options].name== obj.home){
             keep = true;
-        }else{
-            options.remove(environment.terrainQuadrants.indexOf(environment.terrainQuadrants[options]));
         }
         //3) Food
         if(environment.terrainQuadrants[options].name=='Plain'){
@@ -55,7 +53,7 @@ function Prey(obj){
         }
         environment.objectsInQuadrant[option].forEach(function(o){
             //2) others TODO classes may be the death of us
-            if(o.__class__==obj.__class__&&keep!=true){
+            if(o.name==obj.name&&keep!=true){
                 keep = true;
             }
             if(!keep){
