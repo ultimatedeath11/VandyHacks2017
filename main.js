@@ -76,7 +76,6 @@ function Predators(obj){
         choice = options[choice];
         var coords = quadCoordinates(environment.terrainQuadrants[choice]);
         move(obj,coords);
- Sample Update
     });
     console.log(options);
 }
@@ -98,6 +97,7 @@ function move(obj,coords){
     obj.object.position.x = obj.x;
     obj.object.position.y = obj.y;
     obj.object.position.z = obj.z;
+}
 // ---Generic Object Classes---
 function Mountain(x,y,z){
     this.object = new THREE.Mesh();
