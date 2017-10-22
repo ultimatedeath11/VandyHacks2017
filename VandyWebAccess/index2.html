@@ -1,4 +1,4 @@
-<!doctype html>
+
 <html>
 <head>
 <link rel="stylesheet" href="styles.css">
@@ -28,13 +28,14 @@
               <option value="5">5</option>
               <option value="6">6</option>
             </select>
-            <select>
+            <select name="length">
                 <option value="days">days</option>
                 <option value="weeks">weeks</option>
                 <option value="month">month</option>
                 <option value="year">year</option>
             </select>
             <!-- TODO: write a button for submitting it to the PHP and redirect to the correct page. -->
+            <input type="submit" value="Go!" />
         </form>
         <br><hr>
         <p class="secondimage"><img src="images/wowza-smaller.png"</p>
@@ -43,8 +44,7 @@
 		group from left to right: yada yada yada</p>
 		<br><hr>
 		<a name="feedback"><form class="feedback"></a>
-		<textarea name="message" rows="10" cols="30">
-	We'd love to hear your opinions.
+		<textarea name="message" rows="10" cols="30">We'd love to hear your opinions.
 		</textarea>
         <br>
             <input type="submit" value="Leave Us Your FeedBack!">
