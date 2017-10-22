@@ -27,7 +27,7 @@ Things to be to to inclue in envornment:
     - how that will effect the water flow
     - if above a certian altitude threaten life, snow, & civilazation
   - civilazation
-    - # of people (both male and famale)
+    - number of people (both male and famale)
   - natureal animals in the envornment
     - animals movement in relation to food & water
     - hibernation
