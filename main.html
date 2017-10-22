@@ -38,7 +38,6 @@
             var loader = new THREE.JSONLoader();
             var thisMesh;
             function onModelLoad(geom,mat){
-                console.log(mat);
                 thisMesh = new THREE.Mesh(geom,mat[0]);
                 scene.add(thisMesh);
                 numObjects++; // count for line 64
@@ -77,8 +76,6 @@
                         this_terrain = new Mountain(x,0,z);
                         //this_terrain = new Plain(x,0,z);
                     }
-                    //console.log(this_terrain);
-                    //console.log(x,z);
                     loader.load(this_terrain.path,onModelLoad);
                     environment.objects.push(this_terrain);
                 }
